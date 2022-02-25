@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NanaBillsAPI", "NanaBillsAPI\NanaBillsAPI.csproj", "{6CEDAD82-8420-47DA-AA16-E0A115020D8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{6629F285-BBEB-4EB2-BF7D-608313AE07D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6CEDAD82-8420-47DA-AA16-E0A115020D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CEDAD82-8420-47DA-AA16-E0A115020D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CEDAD82-8420-47DA-AA16-E0A115020D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6629F285-BBEB-4EB2-BF7D-608313AE07D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6629F285-BBEB-4EB2-BF7D-608313AE07D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6629F285-BBEB-4EB2-BF7D-608313AE07D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6629F285-BBEB-4EB2-BF7D-608313AE07D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
