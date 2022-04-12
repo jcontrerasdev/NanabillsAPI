@@ -17,7 +17,6 @@ namespace DomainLayer.Services.User
         }
         public async Task<LoginResponse> Login(LoginRequest loginRequest)
         {
-            var name = _configuration["SecretToken"];
             var customer = _context.Users.SingleOrDefault(customer => customer.Username == loginRequest.Username);
             if (customer == null) return null;
 
