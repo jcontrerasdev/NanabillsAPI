@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
-namespace NanaBillsAPI
+namespace NanaBillsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExpensesController : Controller
+    public class ExpensesController : BaseSecureController
     {
         IExpensesService ExpensesService { get; set; }
         private readonly IMapper _mapper;
@@ -39,7 +39,7 @@ namespace NanaBillsAPI
 
                 if (expenses == null || !expenses.Any())
                 {
-                    return NotFound($"No expenses was found");
+                    return NotFound($"No expenses were found");
                 }
                 var expenseDTO = _mapper.Map<IEnumerable<ExpenseResponse>>(expenses);
                 return Ok(expenseDTO);
@@ -195,10 +195,5 @@ namespace NanaBillsAPI
             }
         }
 
-        private Claim GetClaim()
-        {
-            var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
-            return claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-        }
     }
 }

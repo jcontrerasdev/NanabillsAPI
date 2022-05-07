@@ -10,6 +10,8 @@ namespace NanaBillsAPI.Profiles
         {
             CreateMap<Expense, ExpenseResponse>();
             CreateMap<ExpenseRequest, Expense> ();
+            CreateMap<Income, IncomeResponse>();
+            CreateMap<IncomeRequest, Income>();
         }
     }
 }

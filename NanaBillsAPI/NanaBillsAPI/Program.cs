@@ -2,8 +2,10 @@ using AutoMapper;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Repositories.Expense;
+using DataAccessLayer.Repositories.Income;
 using DomainLayer.Helpers;
 using DomainLayer.Services.Expenses;
+using DomainLayer.Services.Income;
 using DomainLayer.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -56,7 +58,9 @@ builder.Services.AddSingleton(mapper);
 // Services.
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExpensesService, ExpensesService>();
+builder.Services.AddScoped<IIncomeService, IncomeService>();
 builder.Services.AddTransient<IGenericRepository<Expense, long>, ExpenseRepository>();
+builder.Services.AddTransient<IGenericRepository<Income, long>, IncomeRepository>();
 
 var app = builder.Build();
 
