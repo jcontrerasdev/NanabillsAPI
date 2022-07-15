@@ -171,7 +171,7 @@ namespace NanaBillsAPI.Controllers
 
         // Get: api/Expenses/search/text
         [HttpGet("{search}/{description}")]
-        public async Task<ActionResult<Expense>> Search(string description)
+        public async Task<IActionResult> Search(string description)
         {
             try
             {
@@ -182,7 +182,7 @@ namespace NanaBillsAPI.Controllers
                     return Unauthorized();
                 }
 
-                var result = await ExpensesService.Search(x => x.Description == description && x.IdUser == int.Parse(claim.Value));
+                var result = await ExpensesService.Search(x => x.Description.Contains(description) && x.IdUser == int.Parse(claim.Value));
 
                 if (result.Any()) return Ok(_mapper.Map<IEnumerable<ExpenseResponse>>(result));
 

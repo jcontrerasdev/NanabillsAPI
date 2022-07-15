@@ -131,5 +131,61 @@ namespace NanaBillsAPI.Controllers
                     "Error creating new expense record");
             }
         }
+        // DELETE: api/Income/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteIncome(long id)
+        {
+            try
+            {
+                var claim = GetClaim();
+
+                if (claim == null)
+                {
+                    return Unauthorized();
+                }
+
+                var incomeToDelete = await IncomeService.GetById(x => x.Id == id && x.IdUser == int.Parse(claim.Value));
+
+                if (incomeToDelete == null)
+                {
+                    return NotFound($"Expense with Id = {id} not found");
+                }
+                await IncomeService.Delete(x => x.Id == id && x.IdUser == int.Parse(claim.Value));
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
+        }
+
+        // Get: api/Income/search/text
+        [HttpGet("{search}/{description}")]
+        public async Task<ActionResult<IncomeResponse>> Search(string description)
+        {
+            try
+            {
+                var claim = GetClaim();
+
+                if (claim == null)
+                {
+                    return Unauthorized();
+                }
+
+                var result = await IncomeService.Search(x => x.Description.Contains(description) && x.IdUser == int.Parse(claim.Value));
+
+                if (result.Any()) return Ok(_mapper.Map<IEnumerable<IncomeResponse>>(result));
+
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+            }
+        }
+
     }
 }
