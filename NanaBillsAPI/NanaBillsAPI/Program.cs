@@ -1,9 +1,11 @@
 using AutoMapper;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
+using DataAccessLayer.Repositories.Category;
 using DataAccessLayer.Repositories.Expense;
 using DataAccessLayer.Repositories.Income;
 using DomainLayer.Helpers;
+using DomainLayer.Services.Category;
 using DomainLayer.Services.Expenses;
 using DomainLayer.Services.Income;
 using DomainLayer.Services.User;
@@ -59,8 +61,12 @@ builder.Services.AddSingleton(mapper);
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExpensesService, ExpensesService>();
 builder.Services.AddScoped<IIncomeService, IncomeService>();
+builder.Services.AddScoped<IIncomeCategoryService, IncomeCategoryService>();
+builder.Services.AddScoped<IExpenseCategoryService, ExpenseCategoryService>();
 builder.Services.AddTransient<IGenericRepository<Expense, long>, ExpenseRepository>();
 builder.Services.AddTransient<IGenericRepository<Income, long>, IncomeRepository>();
+builder.Services.AddTransient<IGenericRepository<IncomeCategory, long>, IncomeCategoryRepository>();
+builder.Services.AddTransient<IGenericRepository<ExpenseCategory, long>, ExpenseCategoryRepository>();
 
 var app = builder.Build();
 

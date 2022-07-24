@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace DomainLayer.Services
 {
-    public class GenericService<TEntity, TId> : IGenericService<TEntity, TId> where TEntity : class
+    public abstract class GenericService<TEntity, TId> : IGenericService<TEntity, TId> where TEntity : class
     {
         private IGenericRepository<TEntity, TId> _genericRepository;
 

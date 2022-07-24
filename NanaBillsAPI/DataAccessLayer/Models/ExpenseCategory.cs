@@ -12,7 +12,7 @@ namespace DataAccessLayer.Models
 
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public int UserId { get; set; }
+        public int IdUser { get; set; }
 
         public virtual ICollection<Expense> Expenses { get; set; }
     }

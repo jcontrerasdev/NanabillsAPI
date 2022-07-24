@@ -105,7 +105,7 @@ namespace DataAccessLayer.Models
                     .IsUnicode(false)
                     .HasColumnName("name");
 
-                entity.Property(e => e.UserId).HasColumnName("user_id");
+                entity.Property(e => e.IdUser).HasColumnName("id_user");
             });
 
             modelBuilder.Entity<Income>(entity =>
